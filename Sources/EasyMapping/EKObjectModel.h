@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return mapped object
  */
-+ (instancetype)objectWithProperties:(NSDictionary *)properties;
++ (nullable instancetype)objectWithProperties:(NSDictionary *)properties;
 
 
 /**
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return mapped object
  */
-- (instancetype)initWithProperties:(NSDictionary *)properties;
+- (nullable instancetype)initWithProperties:(NSDictionary *)properties;
 
 /**
  Serialize mapped object back to JSON representation. 

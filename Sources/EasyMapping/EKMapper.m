@@ -98,6 +98,11 @@
 			 [EKPropertyHelper setValue:nil onObject:object forKeyPath:manyRelationship.property];
 		 }
     }
+
+    if (mapping.objectValidator != nil && !mapping.objectValidator(object)) {
+        return nil;
+    }
+
     return object;
 }
 

@@ -78,6 +78,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSMutableArray<EKRelationshipMapping *> *hasManyMappings;
 
 /**
+ Block, that validates object filled with mappings.
+ */
+@property (nonatomic, copy, nullable) BOOL(^objectValidator)(id);
+
+/**
  Convenience initializer.
  
  @param objectClass Class of object, that will consume results of mapping

@@ -27,19 +27,19 @@ class EKObjectModelTestCase: XCTestCase {
     }
     
     func testObjectWithProperties() {
-        let object = TestObjectModel.object(withProperties: ["bar":"123"])
+        let object = TestObjectModel.object(withProperties: ["bar":"123"])!
         
         XCTAssertEqual(object.foo, "123")
     }
     
     func testInitWithProperties() {
-        let object = TestObjectModel(properties: ["bar":"123"])
+        let object = TestObjectModel(properties: ["bar":"123"])!
         
         XCTAssertEqual(object.foo, "123")
     }
     
     func testSerializedObject() {
-        let object = TestObjectModel(properties: ["bar":"123"])
+        let object = TestObjectModel(properties: ["bar":"123"])!
         let serialized = object.serializedObject()
         
         XCTAssertEqual(serialized["bar"] as? String, "123")

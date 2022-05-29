@@ -303,7 +303,7 @@ class EKMapperTestCase: EKMapperBaseTestCase {
     
     func testMapKeypathToPropertyShouldConvertPropertiesToMutableIfTheyAreMutableByDefinition() {
         let info = FixtureLoader.dictionary(fromFileNamed: "MutableFoundationClass.json")
-        let instance = MutableFoundationClass(properties: info)
+        let instance = MutableFoundationClass(properties: info)!
         
         XCTAssert(instance.array.isKind(of: NSMutableArray.self))
         XCTAssertEqual(instance.array as NSArray as? [Int] ?? [], [2,4])

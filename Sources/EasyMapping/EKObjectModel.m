@@ -22,13 +22,9 @@
 
 -(instancetype)initWithProperties:(NSDictionary *)properties
 {
-    if (self = [super init])
-    {
-        [EKMapper fillObject:self
-  fromExternalRepresentation:properties
-                 withMapping:[self.class objectMapping]];
-    }
-    return self;
+    return [EKMapper fillObject:[super init]
+     fromExternalRepresentation:properties
+                    withMapping:[self.class objectMapping]];
 }
 
 #pragma mark - serialization
