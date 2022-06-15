@@ -29,9 +29,6 @@
     @try {
         return [self valueForKeyPath:keyPath];
     } @catch (NSException *exception) {
-        if (![exception isKindOfClass:NSUndefinedKeyException.class]) {
-            @throw exception;
-        }
         return nil;
     }
 }
