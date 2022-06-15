@@ -223,7 +223,12 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
                                                 withMapping:(EKObjectMapping *)mapping
 {
     if (mapping.rootPath) {
-        return [externalRepresentation valueForKeyPath:mapping.rootPath];
+        id result = [externalRepresentation valueForKeyPath:mapping.rootPath];
+        if ([result isKindOfClass:NSDictionary.class]) {
+            return result;
+        } else {
+            return nil;
+        }
     }
     return externalRepresentation;
 }

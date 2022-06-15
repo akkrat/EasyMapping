@@ -28,7 +28,12 @@
 {
     if (self.nonNestedKeyPaths == nil)
     {
-        return [representation valueForKeyPath:self.keyPath];
+        id result = [representation valueForKeyPath:self.keyPath];
+        if ([result isKindOfClass:NSDictionary.class]) {
+            return result;
+        } else {
+            return nil;
+        }
     }
     else {
         NSMutableDictionary * values = [NSMutableDictionary dictionaryWithCapacity:self.nonNestedKeyPaths.count];

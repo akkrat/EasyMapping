@@ -141,6 +141,10 @@
 - (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                      withRelationship:(EKRelationshipMapping *)mapping
 {
+    if (![externalRepresentation isKindOfClass:[NSArray class]] ||
+        ![mapping isKindOfClass:[EKRelationshipMapping class]]) {
+        return nil;
+    }
     NSMutableArray * array = [NSMutableArray array];
     for (NSDictionary * representation in externalRepresentation)
     {
@@ -153,7 +157,10 @@
 - (NSArray *)arrayOfObjectsFromExternalRepresentation:(NSArray *)externalRepresentation
                                           withMapping:(EKManagedObjectMapping *)mapping
 {
-    
+    if (![externalRepresentation isKindOfClass:[NSArray class]] ||
+        ![mapping isKindOfClass:[EKManagedObjectMapping class]]) {
+        return nil;
+    }
     NSMutableArray * array = [NSMutableArray array];
     for (NSDictionary * representation in externalRepresentation)
     {
