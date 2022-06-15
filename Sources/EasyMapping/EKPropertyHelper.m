@@ -23,6 +23,7 @@
 
 #import "EKPropertyHelper.h"
 #import <string.h>
+#import "NSObject+SafeValueForKeyPath.h"
 @import ObjectiveC.runtime;
 
 static const char scalarTypes[] = {
@@ -149,7 +150,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     if ([(id <NSObject>)object isKindOfClass:[NSManagedObject class]])
     {
         // Reducing update times in CoreData
-        id _value = [object valueForKeyPath:keyPath];
+        id _value = [object ek_safeValueForKeyPath:keyPath];
         
         if (_value != value && ![_value isEqual:value]) {
             [object setValue:value forKeyPath:keyPath];
@@ -162,7 +163,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
 
 +(void)addValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath
 {
-    id _value = [object valueForKeyPath:keyPath];
+    id _value = [object ek_safeValueForKeyPath:keyPath];
     
     if ([object isKindOfClass:[NSManagedObject class]])
     {
@@ -190,14 +191,14 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     if (mapping == nil) return nil;
     
     if (mapping.valueBlock) {
-        id value = [representation valueForKeyPath:mapping.keyPath];
+        id value = [representation ek_safeValueForKeyPath:mapping.keyPath];
         if (value != nil) {
             return mapping.valueBlock(mapping.keyPath, value);
         }
         return value;
     }
     else {
-        return [representation valueForKeyPath:mapping.keyPath];
+        return [representation ek_safeValueForKeyPath:mapping.keyPath];
     }
 }
 
@@ -208,14 +209,14 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     if (mapping == nil) return nil;
     
     if (mapping.managedValueBlock) {
-        id value = [representation valueForKeyPath:mapping.keyPath];
+        id value = [representation ek_safeValueForKeyPath:mapping.keyPath];
         if (value != nil) {
             return mapping.managedValueBlock(mapping.keyPath,value,context);
         }
         return value;
     }
     else {
-        return [representation valueForKeyPath:mapping.keyPath];
+        return [representation ek_safeValueForKeyPath:mapping.keyPath];
     }
 }
 
@@ -223,7 +224,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
                                                 withMapping:(EKObjectMapping *)mapping
 {
     if (mapping.rootPath) {
-        id result = [externalRepresentation valueForKeyPath:mapping.rootPath];
+        id result = [externalRepresentation ek_safeValueForKeyPath:mapping.rootPath];
         if ([result isKindOfClass:NSDictionary.class]) {
             return result;
         } else {

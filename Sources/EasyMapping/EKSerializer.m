@@ -25,6 +25,7 @@
 #import "EKPropertyMapping.h"
 #import "EKPropertyHelper.h"
 #import "EKRelationshipMapping.h"
+#import "NSObject+SafeValueForKeyPath.h"
 
 @implementation EKSerializer
 
@@ -175,7 +176,7 @@
 +(void)setValueOnRepresentation:(NSMutableDictionary *)representation fromManagedObject:(id)object
             withPropertyMapping:(EKPropertyMapping *)propertyMapping inContext:(NSManagedObjectContext *)context
 {
-    id returnedValue = [object valueForKeyPath:propertyMapping.property];
+    id returnedValue = [object ek_safeValueForKeyPath:propertyMapping.property];
 
     if (returnedValue) {
 
@@ -188,7 +189,7 @@
 
 + (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withPropertyMapping:(EKPropertyMapping *)propertyMapping
 {
-    id returnedValue = [object valueForKeyPath:propertyMapping.property];
+    id returnedValue = [object ek_safeValueForKeyPath:propertyMapping.property];
     
     if (returnedValue) {
         

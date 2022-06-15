@@ -25,6 +25,7 @@
 #import "EKPropertyHelper.h"
 #import "EKPropertyMapping.h"
 #import "EKRelationshipMapping.h"
+#import "NSObject+SafeValueForKeyPath.h"
 
 @implementation EKMapper
 
@@ -76,7 +77,7 @@
             }
         }
         
-        NSArray *arrayToBeParsed = [representation valueForKeyPath:manyRelationship.keyPath];
+        NSArray *arrayToBeParsed = [representation ek_safeValueForKeyPath:manyRelationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
             continue;

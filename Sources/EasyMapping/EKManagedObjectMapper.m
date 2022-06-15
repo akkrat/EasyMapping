@@ -25,6 +25,7 @@
 #import "EKPropertyHelper.h"
 #import "EKCoreDataImporter.h"
 #import "EKRelationshipMapping.h"
+#import "NSObject+SafeValueForKeyPath.h"
 
 @interface EKManagedObjectMapper ()
 @property (nonatomic, strong) EKCoreDataImporter * importer;
@@ -113,7 +114,7 @@
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation
                                                                                     withMapping:mapping];
     for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
-        NSArray * arrayToBeParsed = [representation valueForKeyPath:relationship.keyPath];
+        NSArray * arrayToBeParsed = [representation ek_safeValueForKeyPath:relationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
             continue;

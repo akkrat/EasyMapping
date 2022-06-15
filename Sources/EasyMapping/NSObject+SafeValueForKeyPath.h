@@ -21,20 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "EKMapper.h"
-#import "EKSerializer.h"
-#import "EKObjectMapping.h"
-#import "EKManagedObjectMapper.h"
-#import "EKManagedObjectMapping.h"
-#import "EKMappingBlocks.h"
-#import "EKObjectModel.h"
-#import "EKManagedObjectModel.h"
-#import "EKMappingProtocol.h"
-#import "EKPropertyMapping.h"
-#import "EKRelationshipMapping.h"
-#import "NSDateFormatter+EasyMappingAdditions.h"
-#import "EKRelationshipMapping.h"
-#import "EKPropertyHelper.h"
-#import "EKCoreDataImporter.h"
-#import "NSArray+FlattenArray.h"
-#import "NSObject+SafeValueForKeyPath.h"
+@import Foundation;
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NSObject (SafeValueForKeyPath)
+
+-(nullable id)ek_safeValueForKeyPath:(NSString *)keyPath;
+
+@end
+
+NS_ASSUME_NONNULL_END

@@ -7,6 +7,7 @@
 //
 
 #import "EKRelationshipMapping.h"
+#import "NSObject+SafeValueForKeyPath.h"
 
 @implementation EKRelationshipMapping
 
@@ -28,7 +29,7 @@
 {
     if (self.nonNestedKeyPaths == nil)
     {
-        id result = [representation valueForKeyPath:self.keyPath];
+        id result = [representation ek_safeValueForKeyPath:self.keyPath];
         if ([result isKindOfClass:NSDictionary.class]) {
             return result;
         } else {
@@ -40,7 +41,7 @@
         
         for (NSString * keyPath in self.nonNestedKeyPaths)
         {
-            id value = [representation valueForKeyPath:keyPath];
+            id value = [representation ek_safeValueForKeyPath:keyPath];
             if (value && value!=(id)[NSNull null])
             {
                 values[keyPath] = value;
