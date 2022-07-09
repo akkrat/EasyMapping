@@ -29,7 +29,7 @@
 {
     if (self.nonNestedKeyPaths == nil)
     {
-        id result = [representation ek_safeValueForKeyPath:self.keyPath];
+        id result = [representation ek_valueForJSKeyPath:self.keyPath];
         if ([result isKindOfClass:NSDictionary.class]) {
             return result;
         } else {
@@ -41,7 +41,7 @@
         
         for (NSString * keyPath in self.nonNestedKeyPaths)
         {
-            id value = [representation ek_safeValueForKeyPath:keyPath];
+            id value = [representation ek_valueForJSKeyPath:keyPath];
             if (value && value!=(id)[NSNull null])
             {
                 values[keyPath] = value;

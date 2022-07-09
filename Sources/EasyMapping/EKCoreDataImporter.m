@@ -149,7 +149,7 @@
 
     for (EKRelationshipMapping *relationship in mapping.hasOneMappings)
     {
-        id oneMappingRepresentation = [rootRepresentation ek_safeValueForKeyPath:relationship.keyPath];
+        id oneMappingRepresentation = [rootRepresentation ek_valueForJSKeyPath:relationship.keyPath];
         if (oneMappingRepresentation && ![oneMappingRepresentation isEqual:[NSNull null]])
         {
             // This is needed, because if one of the objects in array does not contain object for key, returned structure would be something like this:
@@ -175,7 +175,7 @@
 
     for (EKRelationshipMapping *relationship in mapping.hasManyMappings)
     {
-        NSArray * manyMappingRepresentation = [rootRepresentation ek_safeValueForKeyPath:relationship.keyPath];
+        NSArray * manyMappingRepresentation = [rootRepresentation ek_valueForJSKeyPath:relationship.keyPath];
 
         if (manyMappingRepresentation && ![manyMappingRepresentation isEqual:[NSNull null]])
         {

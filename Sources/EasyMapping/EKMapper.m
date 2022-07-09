@@ -77,7 +77,7 @@
             }
         }
         
-        NSArray *arrayToBeParsed = [representation ek_safeValueForKeyPath:manyRelationship.keyPath];
+        NSArray *arrayToBeParsed = [representation ek_valueForJSKeyPath:manyRelationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
             continue;

@@ -53,8 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
  @result parsed JSON in a form of NSArray.
  */
 + (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
-                                                       withMapping:(EKObjectMapping *)mapping
-DEPRECATED_MSG_ATTRIBUTE("Use serializeCollection:withRelationship: instead.");
+                                                       withMapping:(EKObjectMapping *)mapping;
+// DEPRECATED_MSG_ATTRIBUTE("Use serializeCollection:withRelationship: instead.");
 
 /**
  Convert objects to JSON representation.
@@ -96,8 +96,8 @@ DEPRECATED_MSG_ATTRIBUTE("Use serializeCollection:withRelationship: instead.");
  */
 + (NSArray <NSDictionary <NSString *, id> *> *)serializeCollection:(NSArray *)collection
                                                        withMapping:(EKManagedObjectMapping*)mapping
-                                                       fromContext:(NSManagedObjectContext *)context
-DEPRECATED_MSG_ATTRIBUTE("Use serializeCollection:withRelationship:fromContext: instead.");
+                                                       fromContext:(NSManagedObjectContext *)context;
+// DEPRECATED_MSG_ATTRIBUTE("Use serializeCollection:withRelationship:fromContext: instead.");
 
 /**
  Convert CoreData managed objects to JSON representation.

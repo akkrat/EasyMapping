@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (EKObjectMapping *)personWithPetsMapping;
 + (EKObjectMapping *)personMappingThatIgnoresSocialUrlDuringSerialization;
 + (EKRelationshipMapping *)animalCollectionRelationship;
++ (EKObjectMapping *)jsonldMapping;
 + (NSDateFormatter *)iso8601DateFormatter;
 
 @end

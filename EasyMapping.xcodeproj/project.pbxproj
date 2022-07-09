@@ -11,6 +11,9 @@
 		3E1FB69E1EBE36D0007CB0F4 /* EKManagedObjectModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FB69D1EBE36D0007CB0F4 /* EKManagedObjectModelTestCase.swift */; };
 		45A23E3E2859FBA5006BB4C2 /* NSObject+SafeValueForKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A23E3C2859FBA5006BB4C2 /* NSObject+SafeValueForKeyPath.m */; };
 		45A23E3F2859FBA5006BB4C2 /* NSObject+SafeValueForKeyPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A23E3D2859FBA5006BB4C2 /* NSObject+SafeValueForKeyPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45A655C62879BB590090223F /* EasyMapping in Resources */ = {isa = PBXBuildFile; fileRef = 45A655C52879BB590090223F /* EasyMapping */; };
+		45A655C92879BD7B0090223F /* JsonLD.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A655C82879BD7B0090223F /* JsonLD.m */; };
+		45A655CB2879BF560090223F /* Person-json-ld.json in Resources */ = {isa = PBXBuildFile; fileRef = 45A655CA2879BF560090223F /* Person-json-ld.json */; };
 		52D6D9871BEFF229002C0205 /* EasyMapping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* EasyMapping.framework */; };
 		9A0274BE1EB37927003AF7A5 /* EKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0274BD1EB37927003AF7A5 /* EKCoreDataManager.m */; };
 		9A420CFA1EB35622002306BF /* FixtureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A420CF81EB35622002306BF /* FixtureLoader.swift */; };
@@ -133,6 +136,10 @@
 		3E9A90E91EB24789006305D1 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
 		45A23E3C2859FBA5006BB4C2 /* NSObject+SafeValueForKeyPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SafeValueForKeyPath.m"; path = "Sources/EasyMapping/NSObject+SafeValueForKeyPath.m"; sourceTree = "<group>"; };
 		45A23E3D2859FBA5006BB4C2 /* NSObject+SafeValueForKeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SafeValueForKeyPath.h"; path = "Sources/EasyMapping/NSObject+SafeValueForKeyPath.h"; sourceTree = "<group>"; };
+		45A655C52879BB590090223F /* EasyMapping */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EasyMapping; sourceTree = "<group>"; };
+		45A655C72879BD7B0090223F /* JsonLD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsonLD.h; path = TestFixtures/TestModels/Models/NSObject/JsonLD.h; sourceTree = "<group>"; };
+		45A655C82879BD7B0090223F /* JsonLD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JsonLD.m; path = TestFixtures/TestModels/Models/NSObject/JsonLD.m; sourceTree = "<group>"; };
+		45A655CA2879BF560090223F /* Person-json-ld.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Person-json-ld.json"; path = "TestFixtures/Fixtures/Person-json-ld.json"; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* EasyMapping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyMapping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0274BC1EB37927003AF7A5 /* EKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EKCoreDataManager.h; path = TestFixtures/EKCoreDataManager.h; sourceTree = "<group>"; };
@@ -380,6 +387,7 @@
 		3E9A91471EB24883006305D1 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				45A655CA2879BF560090223F /* Person-json-ld.json */,
 				9A420D451EB35696002306BF /* Address.json */,
 				9A420D461EB35696002306BF /* Alien.json */,
 				9A420D471EB35696002306BF /* Car.json */,
@@ -416,6 +424,7 @@
 		3E9A91841EB2489B006305D1 /* FixtureClasses */ = {
 			isa = PBXGroup;
 			children = (
+				45A655C52879BB590090223F /* EasyMapping */,
 				9A420D391EB3568A002306BF /* Dog.h */,
 				9A420D3A1EB3568A002306BF /* Dog.m */,
 				9A420D3B1EB3568A002306BF /* MutableFoundationClass.h */,
@@ -452,6 +461,8 @@
 		3E9A91C61EB248DD006305D1 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				45A655C72879BD7B0090223F /* JsonLD.h */,
+				45A655C82879BD7B0090223F /* JsonLD.m */,
 				9A420D091EB3565E002306BF /* Address.h */,
 				9A420D0A1EB3565E002306BF /* Address.m */,
 				9A420D0B1EB3565E002306BF /* Alien.h */,
@@ -702,6 +713,7 @@
 				9A420D5B1EB35696002306BF /* ComplexRepresentation.json in Resources */,
 				9A420D701EB3569C002306BF /* Native.json in Resources */,
 				9A420D7B1EB3569C002306BF /* PersonWithoutRelations.json in Resources */,
+				45A655C62879BB590090223F /* EasyMapping in Resources */,
 				9A420D5A1EB35696002306BF /* CommentsRecursive.json in Resources */,
 				9A420D551EB35696002306BF /* CarsWithNullItem.json in Resources */,
 				9A420D531EB35696002306BF /* Car.json in Resources */,
@@ -720,6 +732,7 @@
 				9A420D7A1EB3569C002306BF /* PersonWithOtherPhones.json in Resources */,
 				9A420D591EB35696002306BF /* CarWithRoot.json in Resources */,
 				9A420D571EB35696002306BF /* CarWithDate.json in Resources */,
+				45A655CB2879BF560090223F /* Person-json-ld.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,6 +780,7 @@
 				9A420D981EB356AC002306BF /* XCTestEasyMappingSupportTestCase.swift in Sources */,
 				9A420D291EB3565E002306BF /* Finger.m in Sources */,
 				9A420D971EB356AC002306BF /* LinuxMain.swift in Sources */,
+				45A655C92879BD7B0090223F /* JsonLD.m in Sources */,
 				9A420D2C1EB3565E002306BF /* Phone.m in Sources */,
 				9A420D071EB3564E002306BF /* ManagedPerson.m in Sources */,
 				9A420D321EB35672002306BF /* EasyMapping.xcdatamodeld in Sources */,

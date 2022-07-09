@@ -367,4 +367,13 @@ class EKMapperIncrementalDataTestCase: EKMapperBaseTestCase
         
         XCTAssertEqual(person?.phones.count, 2)
     }
+
+    func testInvalidObjCKeyPath() {
+        let info = FixtureLoader.dictionary(fromFileNamed: "Person-json-ld.json")
+        let mapping = MappingProvider.jsonldMapping()
+        let jsonld = EKMapper.object(fromExternalRepresentation: info, with: mapping) as? JsonLD
+
+        XCTAssertNotNil(jsonld?.type)
+        XCTAssertNotNil(jsonld?.context)
+    }
 }

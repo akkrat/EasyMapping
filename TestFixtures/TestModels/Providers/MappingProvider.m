@@ -21,6 +21,7 @@
 #import "CommentObject.h"
 #import "Dog.h"
 #import "Wolf.h"
+#import "JsonLD.h"
 
 @implementation MappingProvider
 
@@ -117,6 +118,11 @@
              withValueBlock:[EKMappingBlocks urlMappingBlock]
                reverseBlock:[EKMappingBlocks urlReverseMappingBlock]];
     }];
+}
+
++ (EKObjectMapping *)jsonldMapping
+{
+    return JsonLD.objectMapping;
 }
 
 +(EKObjectMapping *)personMappingThatAssertsOnNilInValueBlock

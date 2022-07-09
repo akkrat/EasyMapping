@@ -114,7 +114,7 @@
     NSDictionary *representation = [EKPropertyHelper extractRootPathFromExternalRepresentation:externalRepresentation
                                                                                     withMapping:mapping];
     for (EKRelationshipMapping *relationship in mapping.hasManyMappings) {
-        NSArray * arrayToBeParsed = [representation ek_safeValueForKeyPath:relationship.keyPath];
+        NSArray * arrayToBeParsed = [representation ek_valueForJSKeyPath:relationship.keyPath];
         if(mapping.ignoreMissingFields && !arrayToBeParsed)
         {
             continue;

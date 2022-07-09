@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (SafeValueForKeyPath)
 
--(nullable id)ek_safeValueForKeyPath:(NSString *)keyPath;
+- (nullable id)ek_valueForJSKeyPath:(NSString *)keyPath;
 
 @end
 

@@ -176,7 +176,7 @@
 +(void)setValueOnRepresentation:(NSMutableDictionary *)representation fromManagedObject:(id)object
             withPropertyMapping:(EKPropertyMapping *)propertyMapping inContext:(NSManagedObjectContext *)context
 {
-    id returnedValue = [object ek_safeValueForKeyPath:propertyMapping.property];
+    id returnedValue = [object ek_valueForJSKeyPath:propertyMapping.property];
 
     if (returnedValue) {
 
@@ -189,7 +189,7 @@
 
 + (void)setValueOnRepresentation:(NSMutableDictionary *)representation fromObject:(id)object withPropertyMapping:(EKPropertyMapping *)propertyMapping
 {
-    id returnedValue = [object ek_safeValueForKeyPath:propertyMapping.property];
+    id returnedValue = [object ek_valueForJSKeyPath:propertyMapping.property];
     
     if (returnedValue) {
         

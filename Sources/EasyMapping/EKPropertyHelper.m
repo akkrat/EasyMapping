@@ -150,7 +150,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     if ([(id <NSObject>)object isKindOfClass:[NSManagedObject class]])
     {
         // Reducing update times in CoreData
-        id _value = [object ek_safeValueForKeyPath:keyPath];
+        id _value = [object ek_valueForJSKeyPath:keyPath];
         
         if (_value != value && ![_value isEqual:value]) {
             [object setValue:value forKeyPath:keyPath];
@@ -163,7 +163,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
 
 +(void)addValue:(id)value onObject:(id)object forKeyPath:(NSString *)keyPath
 {
-    id _value = [object ek_safeValueForKeyPath:keyPath];
+    id _value = [object ek_valueForJSKeyPath:keyPath];
     
     if ([object isKindOfClass:[NSManagedObject class]])
     {
@@ -191,14 +191,14 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     if (mapping == nil) return nil;
     
     if (mapping.valueBlock) {
-        id value = [representation ek_safeValueForKeyPath:mapping.keyPath];
+        id value = [representation ek_valueForJSKeyPath:mapping.keyPath];
         if (value != nil) {
             return mapping.valueBlock(mapping.keyPath, value);
         }
         return value;
     }
     else {
-        return [representation ek_safeValueForKeyPath:mapping.keyPath];
+        return [representation ek_valueForJSKeyPath:mapping.keyPath];
     }
 }
 
@@ -209,14 +209,14 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     if (mapping == nil) return nil;
     
     if (mapping.managedValueBlock) {
-        id value = [representation ek_safeValueForKeyPath:mapping.keyPath];
+        id value = [representation ek_valueForJSKeyPath:mapping.keyPath];
         if (value != nil) {
             return mapping.managedValueBlock(mapping.keyPath,value,context);
         }
         return value;
     }
     else {
-        return [representation ek_safeValueForKeyPath:mapping.keyPath];
+        return [representation ek_valueForJSKeyPath:mapping.keyPath];
     }
 }
 
@@ -224,7 +224,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
                                                 withMapping:(EKObjectMapping *)mapping
 {
     if (mapping.rootPath) {
-        id result = [externalRepresentation ek_safeValueForKeyPath:mapping.rootPath];
+        id result = [externalRepresentation ek_valueForJSKeyPath:mapping.rootPath];
         if ([result isKindOfClass:NSDictionary.class]) {
             return result;
         } else {

@@ -11,6 +11,7 @@
 #import "Native.h"
 #import "Dog.h"
 #import "Wolf.h"
+#import "JsonLD.h"
 #import "MappingProvider.h"
 #import "ManagedMappingProvider.h"
 
