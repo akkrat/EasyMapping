@@ -52,10 +52,12 @@ NS_ASSUME_NONNULL_BEGIN
  ignoreMissingFields:(BOOL)ignoreMissingFields;
 
 + (nullable id)getValueOfProperty:(EKPropertyMapping *)propertyMapping
-               fromRepresentation:(NSDictionary *)representation;
+               fromRepresentation:(NSDictionary *)representation
+              ignoreMissingFields:(BOOL)ignoreMissingFields;
 
 + (nullable id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
                       fromRepresentation:(NSDictionary *)representation
+                     ignoreMissingFields:(BOOL)ignoreMissingFields
                                inContext:(NSManagedObjectContext *)context;
 
 + (void)setValue:(nullable id)value onObject:(id)object forKeyPath:(NSString *)keyPath;

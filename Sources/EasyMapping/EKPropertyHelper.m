@@ -102,7 +102,7 @@ static const char scalarTypes[] = {
 + (void)setProperty:(EKPropertyMapping *)propertyMapping onObject:(id)object
  fromRepresentation:(NSDictionary *)representation respectPropertyType:(BOOL)respectPropertyType ignoreMissingFields:(BOOL)ignoreMissingFields
 {
-    id value = [self getValueOfProperty:propertyMapping fromRepresentation:representation];
+    id value = [self getValueOfProperty:propertyMapping fromRepresentation:representation ignoreMissingFields:ignoreMissingFields];
     if (value && value != (id)NSNull.null) {
         if (respectPropertyType) {
             value = [self propertyRepresentation:value
@@ -128,6 +128,7 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
 {
     id value = [self getValueOfManagedProperty:propertyMapping
                             fromRepresentation:representation
+                           ignoreMissingFields:ignoreMissingFields
                                      inContext:context];
     if (value && value != (id)NSNull.null) {
         if (respectPropertyType) {
@@ -186,13 +187,13 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
     }
 }
 
-+ (id)getValueOfProperty:(EKPropertyMapping *)mapping fromRepresentation:(NSDictionary *)representation
++ (id)getValueOfProperty:(EKPropertyMapping *)mapping fromRepresentation:(NSDictionary *)representation ignoreMissingFields:(BOOL)ignoreMissingFields
 {
     if (mapping == nil) return nil;
     
     if (mapping.valueBlock) {
         id value = [representation ek_valueForJSKeyPath:mapping.keyPath];
-        if (value != nil) {
+        if (value != nil || !ignoreMissingFields) {
             return mapping.valueBlock(mapping.keyPath, value);
         }
         return value;
@@ -204,13 +205,14 @@ ignoreMissingFields:(BOOL)ignoreMissingFields
 
 +(id)getValueOfManagedProperty:(EKPropertyMapping *)mapping
             fromRepresentation:(NSDictionary *)representation
+           ignoreMissingFields:(BOOL)ignoreMissingFields
                      inContext:(NSManagedObjectContext *)context
 {
     if (mapping == nil) return nil;
     
     if (mapping.managedValueBlock) {
         id value = [representation ek_valueForJSKeyPath:mapping.keyPath];
-        if (value != nil) {
+        if (value != nil || !ignoreMissingFields) {
             return mapping.managedValueBlock(mapping.keyPath,value,context);
         }
         return value;

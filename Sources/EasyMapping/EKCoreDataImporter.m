@@ -203,8 +203,9 @@
 {
     EKPropertyMapping * primaryKeyMapping = [mapping primaryKeyPropertyMapping];
     return [EKPropertyHelper getValueOfManagedProperty:primaryKeyMapping
-                                               fromRepresentation:representation
-                                                        inContext:context];
+                                    fromRepresentation:representation
+                                   ignoreMissingFields:mapping.ignoreMissingFields
+                                             inContext:context];
 }
 
 #pragma mark - Fetching existing objects
@@ -247,6 +248,7 @@
 
     id primaryKeyValue = [EKPropertyHelper getValueOfManagedProperty:[mapping primaryKeyPropertyMapping]
                                                   fromRepresentation:representation
+                                                 ignoreMissingFields:mapping.ignoreMissingFields
                                                            inContext:context];
     if (primaryKeyValue == nil || primaryKeyValue == NSNull.null) return nil;
 
